@@ -9,8 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var falseButton: UIButton!
-    @IBOutlet weak var trueButton: UIButton!
+    @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var bButton: UIButton!
+    @IBOutlet weak var cButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -41,12 +42,16 @@ class ViewController: UIViewController {
     
     func updateUI() {
         self.questionLabel.text = quizBrain.getQuestionText()
+        self.aButton.setTitle(quizBrain.getAnswerText(0), for: .normal)
+        self.bButton.setTitle(quizBrain.getAnswerText(1), for: .normal)
+        self.cButton.setTitle(quizBrain.getAnswerText(2), for: .normal)
         self.progressBar.progress = quizBrain.getProgress()
         self.scoreLabel.text = "Score: \(quizBrain.getScore())"
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // Change `2.0` to the desired number of seconds.
            // Code you want to be delayed
-            self.trueButton.backgroundColor = UIColor.clear
-            self.falseButton.backgroundColor = UIColor.clear
+            self.aButton.backgroundColor = UIColor.clear
+            self.bButton.backgroundColor = UIColor.clear
+            self.cButton.backgroundColor = UIColor.clear
         }
     }
 }
